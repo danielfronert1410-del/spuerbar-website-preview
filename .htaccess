@@ -1,0 +1,30 @@
+# Spürbar Ich sein, Hostinger (LiteSpeed/Apache)
+# Redirects + Fehlerseite. Statische Multi-Page-Site.
+
+RewriteEngine On
+
+# www -> non-www (Canonical ist non-www)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# Alte Wix-URLs -> neue Seiten (301, dauerhaft)
+RewriteRule ^stefanie-fronert/?$ /ueber-mich.html [R=301,L]
+RewriteRule ^preise/?$ /kontakt.html [R=301,L]
+RewriteRule ^kopie-von-hypnose/?$ /hypnose-duesseldorf.html [R=301,L]
+RewriteRule ^arbeitsweise/?$ /sis-methode.html [R=301,L]
+RewriteRule ^praxis/?$ /praxis.html [R=301,L]
+RewriteRule ^buch/?$ /buch.html [R=301,L]
+RewriteRule ^kontakt/?$ /kontakt.html [R=301,L]
+RewriteRule ^termin/?$ /kontakt.html [R=301,L]
+RewriteRule ^sis-methode/?$ /sis-methode.html [R=301,L]
+RewriteRule ^angsttherapie/?$ /angsttherapie-duesseldorf.html [R=301,L]
+RewriteRule ^paartherapie/?$ /paartherapie-duesseldorf.html [R=301,L]
+RewriteRule ^narzissmus/?$ /narzissmus-therapie-duesseldorf.html [R=301,L]
+RewriteRule ^hypnose/?$ /hypnose-duesseldorf.html [R=301,L]
+RewriteRule ^panikattacken/?$ /panikattacken-hilfe-duesseldorf.html [R=301,L]
+RewriteRule ^online-therapie/?$ /online-therapie.html [R=301,L]
+RewriteRule ^faq/?$ /faq.html [R=301,L]
+RewriteRule ^blog/?$ /blog.html [R=301,L]
+
+# Hübsche, on-brand Fehlerseite
+ErrorDocument 404 /404.html
