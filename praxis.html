@@ -114,10 +114,28 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
           </div>
         </div>
 
-        <div class="grid grid--3 reveal" style="margin-top:32px;">
-          <img src="./assets/praxis-flur-_cp__z6E.jpg" alt="Heller Eingangsbereich der Praxis in Düsseldorf" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);" />
-          <img src="./assets/praxis-raum-BSMWUcPY.jpg" alt="Ruhiger Therapieraum mit Sesseln" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);" />
-          <img src="./assets/praxis-sessel-DGhfiY1t.jpg" alt="Gemütlicher Sessel im Therapieraum" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);" />
+        <style>
+          .praxis-slider{position:relative;width:100%;max-width:820px;margin:0 auto;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#efeae3;}
+          .praxis-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-orientation:from-image;opacity:0;animation:praxisFade 30s infinite;}
+          .praxis-slider img:nth-child(1){animation-delay:0s}
+          .praxis-slider img:nth-child(2){animation-delay:5s}
+          .praxis-slider img:nth-child(3){animation-delay:10s}
+          .praxis-slider img:nth-child(4){animation-delay:15s}
+          .praxis-slider img:nth-child(5){animation-delay:20s}
+          .praxis-slider img:nth-child(6){animation-delay:25s}
+          @keyframes praxisFade{0%{opacity:0}2%{opacity:1}14%{opacity:1}18%{opacity:0}100%{opacity:0}}
+          @media (prefers-reduced-motion: reduce){
+            .praxis-slider img{animation:none;opacity:0}
+            .praxis-slider img:nth-child(1){opacity:1}
+          }
+        </style>
+        <div class="praxis-slider reveal" style="margin-top:32px;" role="group" aria-label="Bilder der Praxis in der Mühlenstraße 7">
+          <img src="./assets/praxis-slide-1-OOMykAQE.jpg" alt="Eingang der Praxis in der Mühlenstraße 7 in der Düsseldorfer Altstadt" />
+          <img src="./assets/praxis-slide-2-CIl5nuxr.jpg" alt="Heller Therapieraum mit drei Sesseln, Rundteppich und großen Fenstern" loading="lazy" />
+          <img src="./assets/praxis-slide-3-CRF-6Baw.jpg" alt="Lichtdurchfluteter Praxisraum mit Sesseln, Sideboard und Blick ins Grüne" loading="lazy" />
+          <img src="./assets/praxis-slide-4-D_7uE6AK.jpg" alt="Gemütliche Sitzecke mit Sessel, Pflanze und Holz-Wandpaneel" loading="lazy" />
+          <img src="./assets/praxis-slide-5-C-KfdwM_.jpg" alt="Ruhiger Rückzugsraum mit Relaxsessel, Regal und Pflanzen" loading="lazy" />
+          <img src="./assets/praxis-slide-6-D6UtnVBb.jpg" alt="Praxisraum mit Whiteboard, Bogenlampe und gemütlicher Sitzgelegenheit" loading="lazy" />
         </div>
 
         <div class="split reveal" style="margin-top:56px;">
