@@ -26,5 +26,12 @@ RewriteRule ^online-therapie/?$ /online-therapie.html [R=301,L]
 RewriteRule ^faq/?$ /faq.html [R=301,L]
 RewriteRule ^blog/?$ /blog.html [R=301,L]
 
+# Nachtrag: weitere alte Slugs
+RewriteRule ^termine/?$ /kontakt.html#kontaktformular [R=301,L]
+RewriteRule ^methode/?$ /sis-methode.html [R=301,L]
+RewriteRule ^sys/?$ /sis-methode.html [R=301,L]
+RewriteRule ^burnout/?$ /burnout-therapie-duesseldorf.html [R=301,L]
+RewriteRule ^burnout-therapie/?$ /burnout-therapie-duesseldorf.html [R=301,L]
+
 # Hübsche, on-brand Fehlerseite
 ErrorDocument 404 /404.html
