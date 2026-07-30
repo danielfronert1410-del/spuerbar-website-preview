@@ -33,5 +33,12 @@ RewriteRule ^sys/?$ /sis-methode.html [R=301,L,NC]
 RewriteRule ^burnout/?$ /burnout-therapie-duesseldorf.html [R=301,L,NC]
 RewriteRule ^burnout-therapie/?$ /burnout-therapie-duesseldorf.html [R=301,L,NC]
 
+# Buch-Slugs -> Buchseite
+RewriteRule ^mein-buch/?$ /buch.html [R=301,L]
+RewriteRule ^das-buch/?$ /buch.html [R=301,L]
+RewriteRule ^buecher/?$ /buch.html [R=301,L]
+RewriteRule ^book/?$ /buch.html [R=301,L]
+RewriteRule ^buch-24-stunden-vorspiel/?$ /buch.html [R=301,L]
+
 # Hübsche, on-brand Fehlerseite
 ErrorDocument 404 /404.html
