@@ -3,10 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beziehungscheck | Spürbar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Beziehungscheck für Paare | Spürbar Ich sein</title>
+<meta name="description" content="Kostenloser Beziehungscheck: 20 Fragen, ca. 3 Minuten. Finde heraus, wie es um die fünf Bereiche steht, die eine Beziehung tragen – und welcher gerade deine Aufmerksamkeit braucht.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Stefanie Fronert">
+<meta name="theme-color" content="#4A9E9A">
+<link rel="canonical" href="https://spuerbar-ich-sein.de/beziehungscheck.html">
+<link rel="icon" href="./assets/favicon-zO2UOO1E.svg">
+<link rel="apple-touch-icon" href="./assets/favicon-zO2UOO1E.svg">
+<meta property="og:title" content="Beziehungscheck für Paare | Spürbar Ich sein">
+<meta property="og:description" content="20 Fragen, ca. 3 Minuten: Wo steht deine Beziehung gerade wirklich?">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spuerbar-ich-sein.de/beziehungscheck.html">
+<meta property="og:image" content="https://spuerbar-ich-sein.de/og-image.jpg">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Spürbar Ich sein">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Schriften lokal (self-hosted), keine Google-Fonts-CDN -> DSGVO-konform, konsistent mit dem Rest der Seite -->
+<link rel="stylesheet" href="./fonts/fonts.css">
 <style>
   :root{
     /* --- Spürbar Markenwelt --- */
@@ -188,31 +202,6 @@
     </div>
   </section>
 
-  <!-- ============ E-MAIL-GATE ============ -->
-  <section class="screen" id="screen-gate">
-    <div class="kicker">Fast geschafft</div>
-    <h1 style="font-size:clamp(30px,5.2vw,42px);">Wohin dürfen wir <em>deine Auswertung</em> schicken?</h1>
-    <p class="lede" style="margin-bottom:28px;">Trag dich kurz ein, dann zeigen wir dir direkt im Anschluss, wo deine Beziehung gerade steht, und du bekommst deine persönliche Auswertung auch per E-Mail.</p>
-
-    <form id="leadForm" novalidate>
-      <div class="field">
-        <label for="fname">Dein Vorname</label>
-        <input type="text" id="fname" autocomplete="given-name" placeholder="z. B. Anna">
-      </div>
-      <div class="field">
-        <label for="email">Deine E-Mail-Adresse</label>
-        <input type="email" id="email" autocomplete="email" placeholder="anna@beispiel.de">
-      </div>
-      <div class="consent">
-        <input type="checkbox" id="consent">
-        <label for="consent">Ja, ich möchte meine Auswertung erhalten und bin damit einverstanden, dass Stefanie Fronert (Spürbar Ich sein) mir per E-Mail meine Auswertung sowie Impulse, Angebote und Infos zu Kursen schickt. Diese Einwilligung kann ich jederzeit mit einem Klick widerrufen. Es gelten die <a id="dsLink" href="#" target="_blank" rel="noopener">Datenschutzhinweise</a>.</label>
-      </div>
-      <div class="form-err" id="formErr"></div>
-      <button type="submit" class="btn primary block" id="submitBtn" style="margin-top:10px;">Meine Auswertung anzeigen&nbsp;&nbsp;→</button>
-      <p class="gate-note">Kein Spam. Deine Daten werden vertraulich behandelt und du kannst dich jederzeit mit einem Klick wieder abmelden.</p>
-    </form>
-  </section>
-
   <!-- ============ ERGEBNIS ============ -->
   <section class="screen" id="screen-result">
     <div class="score-hero">
@@ -235,10 +224,49 @@
 
     <div class="cta-card" id="ctaCard"></div>
 
+    <!-- Optionales E-Mail-Feld: entkoppelt – das Ergebnis oben ist bereits sichtbar -->
+    <div class="cta-card" id="mailCard">
+      <div class="kicker">Optional</div>
+      <h2 style="font-size:clamp(22px,4vw,28px);">Magst du dranbleiben?</h2>
+      <p>Wenn du möchtest, schicke ich dir eine Zusammenfassung sowie sanfte Impulse, Angebote und Infos zu meinen Kursen per E-Mail. Ganz freiwillig – dein Ergebnis siehst du oben unabhängig davon.</p>
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="fname">Dein Vorname <span style="color:var(--ink-soft);font-weight:400;">(optional)</span></label>
+          <input type="text" id="fname" autocomplete="given-name" placeholder="z. B. Anna">
+        </div>
+        <div class="field">
+          <label for="email">Deine E-Mail-Adresse</label>
+          <input type="email" id="email" autocomplete="email" placeholder="anna@beispiel.de">
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="consent">
+          <label for="consent">Ja, schick mir per E-Mail eine Zusammenfassung sowie Impulse, Angebote und Infos zu Kursen von Stefanie Fronert (Spürbar Ich sein). Jederzeit mit einem Klick widerrufbar. Es gelten die <a id="dsLink" href="#" target="_blank" rel="noopener">Datenschutzhinweise</a>.</label>
+        </div>
+        <div class="form-err" id="formErr"></div>
+        <button type="submit" class="btn primary block" id="submitBtn" style="margin-top:10px;">Eintragen &amp; dranbleiben&nbsp;&nbsp;→</button>
+        <p class="gate-note">Kein Spam. Du kannst dich jederzeit mit einem Klick wieder abmelden.</p>
+      </form>
+      <div id="mailThanks" style="display:none;text-align:center;padding:10px 0;">
+        <p style="font-size:16px;color:var(--ink);margin:0;">Fast geschafft: Bitte bestätige noch kurz die E-Mail, die ich dir gerade geschickt habe. 💌</p>
+      </div>
+    </div>
+
     <div class="restart">
       <button class="btn ghost" id="restartBtn">↺ Check noch einmal machen</button>
     </div>
   </section>
+
+  <!-- ============ FOOTER (Impressumspflicht: Impressum + Datenschutz von jeder Seite erreichbar) ============ -->
+  <footer style="margin-top:56px;padding-top:26px;border-top:1px solid var(--line);text-align:center;">
+    <a href="index.html" style="font-family:'Cormorant',serif;font-style:italic;font-size:1.35rem;color:var(--ink);text-decoration:none;">Spürbar Ich sein</a>
+    <p style="font-size:13px;color:var(--ink-soft);margin:9px 0 14px;">Angst- &amp; Paartherapie in Düsseldorf · Stefanie Fronert</p>
+    <nav style="display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;font-size:13.5px;">
+      <a href="index.html" style="color:var(--ink-soft);text-decoration:none;">Startseite</a>
+      <a href="kontakt.html" style="color:var(--ink-soft);text-decoration:none;">Kontakt</a>
+      <a href="impressum.html" style="color:var(--ink-soft);text-decoration:none;">Impressum</a>
+      <a href="datenschutz.html" style="color:var(--ink-soft);text-decoration:none;">Datenschutz</a>
+    </nav>
+  </footer>
 
 </div>
 
@@ -253,17 +281,17 @@
      KONFIG  ->  hier passt Steffi Links & Anbindung an
      ========================================================= */
   var LINKS = {
-    erstgespraech: "https://www.spuerbar-ich-sein.de/kontakt.html",   // Kontaktseite (Erstgespräch)
+    erstgespraech: "kontakt.html",                                   // Kontaktseite (Erstgespräch), relativ = kein www-301
     buch:          "https://das24stundenvorspiel.de"                  // Buch "Das 24-Stunden-Vorspiel"
   };
 
   var LEAD = {
-    enabled:       true,   // false = Ergebnis sofort, ohne E-Mail-Abfrage
+    enabled:       true,   // false = optionales E-Mail-Feld ganz ausblenden
     // Brevo Formular-Action (Liste "Beziehungscheck"):
     endpoint:      "https://b4a394b0.sibforms.com/serve/MUIFAKMaxW9yhFsXUqzA9riwYpLLQfZsQVfqEiEezjPZLCHK8dpRxQgn-1xL8HuB9xpvhRV-K7lDrB9fEVHrF6nLwLqWUZc9umxfv2g5egzKbch1-wphRRXCRKLv4OKZ9JCgnRGx4VpxeoQiEOE1N9h-o27gbcsv9hRFKhQ_x-sADJKheDx6AhVi-Y11F1UuMEItAMOttYtto0Psxw==",
     fields:        { email: "EMAIL", name: "VORNAME" },  // Brevo-Feldnamen
     extra:         { OPT_IN: "1", email_address_check: "", locale: "de" },  // Brevo Opt-in + Spamschutz + Sprache
-    datenschutzUrl:"https://www.spuerbar-ich-sein.de/datenschutz.html"  // Datenschutzerklärung
+    datenschutzUrl:"datenschutz.html"  // Datenschutzerklärung (relativ = kein www-301)
   };
 
   /* =========================================================
@@ -326,7 +354,7 @@
   /* --- DOM --- */
   function $(id){ return document.getElementById(id); }
   function show(name){
-    ['intro','quiz','gate','result'].forEach(function(s){
+    ['intro','quiz','result'].forEach(function(s){
       $('screen-'+s).classList.toggle('active', s===name);
     });
     window.scrollTo({top:0, behavior:'smooth'});
@@ -367,8 +395,7 @@
   }
 
   function finishQuiz(){
-    if(LEAD.enabled){ show('gate'); setTimeout(function(){ $('email').focus(); }, 300); }
-    else { showResult(); }
+    showResult();   // Ergebnis immer direkt zeigen (entkoppelt, keine E-Mail-Pflicht)
   }
 
   $('startBtn').addEventListener('click', function(){ show('quiz'); renderQuestion(); });
@@ -398,18 +425,15 @@
     e.preventDefault();
     var email = ($('email').value || '').trim();
     var name  = ($('fname').value || '').trim();
-    var okName = name.length >= 1;
     var okMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     var okConsent = $('consent').checked;
 
-    $('fname').classList.toggle('err', !okName);
     $('email').classList.toggle('err', !okMail);
-    if(!okName){ $('formErr').textContent = 'Bitte gib deinen Vornamen ein.'; return; }
     if(!okMail){ $('formErr').textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.'; return; }
-    if(!okConsent){ $('formErr').textContent = 'Bitte setze den Haken, damit wir dir deine Auswertung schicken dürfen.'; return; }
+    if(!okConsent){ $('formErr').textContent = 'Bitte setze den Haken, damit ich dir schreiben darf.'; return; }
     $('formErr').textContent = '';
 
-    // Daten an Newsletter-Tool schicken (nur wenn ein Endpoint hinterlegt ist)
+    // E-Mail ist freiwillig -> reine Newsletter-Anmeldung (Double-Opt-In via Brevo). Quiz-Antworten werden NICHT uebertragen.
     if(LEAD.endpoint){
       try{
         var f = document.createElement('form');
@@ -420,10 +444,11 @@
         Object.keys(LEAD.extra||{}).forEach(function(k){ addField(k, LEAD.extra[k]); });
         document.body.appendChild(f);
         f.submit();
-      }catch(err){ /* Ergebnis trotzdem zeigen */ }
+      }catch(err){ /* Formular ausblenden, Danke zeigen */ }
     }
 
-    showResult();
+    $('leadForm').style.display = 'none';
+    $('mailThanks').style.display = 'block';
   });
 
   /* =========================================================
@@ -527,6 +552,12 @@
 
   function showResult(){
     show('result');
+    // Optionales Mail-Feld zuruecksetzen (wichtig bei "Check noch einmal machen")
+    $('mailCard').style.display = LEAD.enabled ? '' : 'none';
+    $('leadForm').style.display = '';
+    $('leadForm').reset();
+    $('mailThanks').style.display = 'none';
+    $('formErr').textContent = '';
     var res = computeResults();
     var b = BUCKET[bucketFor(res.total)];
 
