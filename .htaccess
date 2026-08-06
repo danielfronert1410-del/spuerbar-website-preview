@@ -27,6 +27,8 @@ RewriteRule ^faq/?$ /faq.html [R=301,L,NC]
 RewriteRule ^blog/?$ /blog.html [R=301,L,NC]
 
 # Nachtrag: weitere alte Slugs
+RewriteRule ^praxis-duesseldorf/?$ /praxis.html [R=301,L,NC]
+RewriteRule ^arbeitsweise-1/?$ /sis-methode.html [R=301,L,NC]
 RewriteRule ^termine/?$ /kontakt.html#kontaktformular [R=301,L,NC]
 RewriteRule ^methode/?$ /sis-methode.html [R=301,L,NC]
 RewriteRule ^sys/?$ /sis-methode.html [R=301,L,NC]
