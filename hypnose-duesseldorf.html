@@ -307,12 +307,13 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     function loadGTM(){ if(gtmDone)return; gtmDone=true; (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TD46XN5X'); }
     function loadClickRank(){ if(crDone)return; crDone=true; var c=document.createElement('script'); c.src='https://js.clickrank.ai/seo/974265e5-cc6f-4805-ae70-e56aecd650cc/script?'+new Date().getTime(); c.async=true; document.head.appendChild(c); }
     function grant(){ if(typeof gtag==='function'){gtag('consent','update',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});} loadGTM(); loadEleven(); loadClickRank(); }
+    function revoke(){ if(typeof gtag==='function'){gtag('consent','update',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});} }
     function show(){ if(banner) banner.hidden=false; } function hide(){ if(banner) banner.hidden=true; }
     var stored=null; try{stored=localStorage.getItem(KEY);}catch(e){}
     if(stored==='granted'){ grant(); } else if(stored!=='denied'){ show(); }
     document.addEventListener('click',function(e){
       var c=e.target.closest('[data-consent]');
-      if(c){ var v=c.getAttribute('data-consent'); try{localStorage.setItem(KEY, v==='accept'?'granted':'denied');}catch(e){} if(v==='accept') grant(); hide(); return; }
+      if(c){ var v=c.getAttribute('data-consent'), accept=(v==='accept'); try{localStorage.setItem(KEY, accept?'granted':'denied');}catch(e){} hide(); if(accept){ grant(); } else { revoke(); if(loaded||gtmDone||crDone){ try{location.reload();}catch(e){} } } return; }
       var o=e.target.closest('[data-consent-open]'); if(o){ e.preventDefault(); show(); }
     });
   })();
