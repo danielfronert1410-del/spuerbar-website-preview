@@ -126,10 +126,8 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     <section class="section section--surface" id="kontaktformular">
       <div class="wrap narrow reveal">
         <div class="center" style="margin-bottom:28px;"><p class="eyebrow">Schreib mir</p><h2>Nachricht senden</h2><p class="lead">Lieber schriftlich? Schreib mir hier ein paar Zeilen, ich melde mich zeitnah bei dir zurück.</p></div>
-        <form class="contact-form" action="https://formsubmit.co/info@spuerbar-ich-sein.de" method="POST">
+        <form class="contact-form" id="sis-contactform" data-mailto="info@spuerbar-ich-sein.de">
           <input type="hidden" name="_subject" value="Neue Nachricht über spuerbar-ich-sein.de">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
           <div class="form-row">
             <label>Name<input type="text" name="Name" required autocomplete="name"></label>
@@ -139,8 +137,24 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
           <label>Deine Nachricht<textarea name="Nachricht" rows="6" required placeholder="Worum geht es dir? Ein paar Stichworte genügen."></textarea></label>
           <label class="form-consent"><input type="checkbox" name="Einwilligung" required> Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert und verarbeitet werden. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</label>
           <button class="btn btn--primary" type="submit">Nachricht senden</button>
-          <p class="price-note" style="margin-top:4px;">Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage genutzt und nicht weitergegeben.</p>
+          <p class="price-note" style="margin-top:4px;">Beim Absenden öffnet sich dein eigenes E-Mail-Programm mit einer vorausgefüllten Nachricht – erst durch dein Senden geht sie an mich. Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage genutzt und nicht an Dritte weitergegeben.</p>
         </form>
+        <script>
+        (function(){
+          var f=document.getElementById('sis-contactform');
+          if(!f)return;
+          f.addEventListener('submit',function(e){
+            e.preventDefault();
+            var honey=f.querySelector('[name="_honey"]');
+            if(honey&&honey.value)return;
+            var to=f.getAttribute('data-mailto');
+            var g=function(n){var el=f.elements[n];return el?String(el.value||'').trim():'';};
+            var subj=(f.elements['_subject']&&f.elements['_subject'].value)||'Nachricht über spuerbar-ich-sein.de';
+            var body='Name: '+g('Name')+'\nE-Mail: '+g('E-Mail')+'\nTelefon: '+g('Telefon')+'\n\n'+g('Nachricht');
+            window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+          });
+        })();
+        </script>
       </div>
     </section>
   
