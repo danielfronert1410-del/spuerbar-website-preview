@@ -35,6 +35,14 @@ RewriteRule ^sys/?$ /sis-methode.html [R=301,L,NC]
 RewriteRule ^burnout/?$ /burnout-therapie-duesseldorf.html [R=301,L,NC]
 RewriteRule ^burnout-therapie/?$ /burnout-therapie-duesseldorf.html [R=301,L,NC]
 
+# Nachtrag 27.08.2026: aus GSC "Nicht gefunden (404)" uebernommen
+RewriteRule ^angst-paniktherapie/?$ /angsttherapie-duesseldorf.html [R=301,L,NC]
+RewriteRule ^paartherapie-beziehung/?$ /paartherapie-duesseldorf.html [R=301,L,NC]
+RewriteRule ^psychotherapie-praxis-d(ü|%C3%BC)sseldorf/?$ /praxis.html [R=301,L,NC]
+RewriteRule ^post/(ä|%C3%A4)ngste-neuroplastizit(ä|%C3%A4)t/?$ /angsttherapie-duesseldorf.html [R=301,L,NC]
+# Restliche alte Wix-Blogposts -> Blog-Uebersicht
+RewriteRule ^post/. /blog.html [R=301,L,NC]
+
 # Buch-Slugs -> Buchseite
 RewriteRule ^mein-buch/?$ /buch.html [R=301,L]
 RewriteRule ^das-buch/?$ /buch.html [R=301,L]
