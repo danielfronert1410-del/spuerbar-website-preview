@@ -185,7 +185,31 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     listening-text="Ich höre dir zu …"
     speaking-text="KI-Assistentin spricht …"></elevenlabs-convai>
 
-    <!-- Cookie-/Consent-Banner (selbstgehostet, granular, keine externe CMP) -->
+    <!-- Notbremse: Der Einblend-Beobachter im Bundle vergibt .in erst bei 12 % Sichtbarkeit.
+       Blöcke, die höher sind als ~8x der Bildschirmhöhe, erreichen diese Schwelle nie und
+       blieben dauerhaft unsichtbar (betraf u. a. die Datenschutzerklärung auf dem Handy).
+       Solche Blöcke werden hier sofort sichtbar gemacht; kurze Blöcke behalten die Animation. -->
+  <script>
+  (function(){
+    function entsperren(){
+      var vh = window.innerHeight || 800;
+      document.querySelectorAll('.reveal').forEach(function(el){
+        if(el.classList.contains('in')) return;
+        if(el.offsetHeight * 0.12 > vh * 0.9) el.classList.add('in');
+      });
+    }
+    function notbremse(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < (window.innerHeight||800) && r.bottom > 0) el.classList.add('in');
+    }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', entsperren);
+    else entsperren();
+    window.addEventListener('load', entsperren);
+    window.addEventListener('resize', entsperren);
+    setTimeout(notbremse, 1500);
+  })();
+  </script>
+  <!-- Cookie-/Consent-Banner (selbstgehostet, granular, keine externe CMP) -->
   <style>
     .sis-consent{position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:16px;display:flex;justify-content:center;pointer-events:none}
     .sis-consent[hidden]{display:none}
