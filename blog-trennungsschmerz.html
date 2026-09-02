@@ -262,7 +262,7 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     var done={gtm:false,el:false,cr:false};
     function loadEleven(){ if(done.el)return; if(!document.querySelector('elevenlabs-convai'))return; done.el=true; var s=document.createElement('script'); s.src='https://unpkg.com/@elevenlabs/convai-widget-embed'; s.async=true; s.type='text/javascript'; document.body.appendChild(s); }
     function loadGTM(){ if(done.gtm)return; done.gtm=true; (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TD46XN5X'); }
-    function loadClickRank(){ if(done.cr)return; done.cr=true; var c=document.createElement('script'); c.src='https://js.clickrank.ai/seo/974265e5-cc6f-4805-ae70-e56aecd650cc/script?'+new Date().getTime(); c.async=true; document.head.appendChild(c); }
+    function loadClickRank(){ if(done.cr)return; done.cr=true; var c=document.createElement('script'); c.src='https://js.clickrank.ai/seo/bba8bf68-54f0-4ac0-bdf8-91d979c7f7ec/script?'+new Date().getTime(); c.async=true; document.head.appendChild(c); }
     function read(){
       try{
         // Die alte Einwilligung (Schluessel OLD) wird BEWUSST nicht uebernommen: Sie war an ein
