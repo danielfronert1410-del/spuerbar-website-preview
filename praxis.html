@@ -38,6 +38,12 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
   <!-- Hinweis: ClickRank-SEO-Script wird erst NACH Einwilligung geladen – siehe Consent-Banner am Seitenende. -->
   <script type="module" crossorigin src="./assets/main-BjqvX0N3.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-B3JCjX0F.css">
+  <style>
+    .sis-map-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+      min-height:220px;padding:24px;text-align:center;background:var(--bg-soft,#F4F0E8);
+      border:1px solid var(--muted,#C4B5A5);border-radius:var(--radius,18px)}
+    .sis-map-ph p{margin:0;font-size:.9rem;line-height:1.5;max-width:34em;color:var(--ink,#2C2320)}
+  </style>
 </head>
 <body>
 
@@ -101,7 +107,26 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
             <p class="eyebrow">Praxis in Düsseldorf</p>
             <h3>Mühlenstraße 7, am Burgplatz</h3>
             <p style="margin-bottom:6px;">Mühlenstraße 7<br>40213 Düsseldorf (Altstadt · Burgplatz)</p>
-            <div class="map-embed"><iframe title="Karte: Mühlenstraße 7, 40213 Düsseldorf" src="https://www.google.com/maps?q=M%C3%BChlenstra%C3%9Fe%207,%2040213%20D%C3%BCsseldorf&z=16&hl=de&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            <div class="map-embed" id="sis-map">
+              <div class="sis-map-ph">
+                <p>Die Karte wird von Google Maps geladen. Dabei wird deine IP-Adresse an Google &uuml;bertragen. Erst mit deinem Klick.</p>
+                <button type="button" class="btn btn--ghost" id="sis-map-btn">Karte von Google Maps laden</button>
+              </div>
+            </div>
+            <script>
+            (function(){
+              var b=document.getElementById('sis-map-btn');
+              if(!b) return;
+              b.addEventListener('click',function(){
+                var w=document.getElementById('sis-map');
+                var i=document.createElement('iframe');
+                i.title='Karte: M\u00fchlenstra\u00dfe 7, 40213 D\u00fcsseldorf';
+                i.src='https://www.google.com/maps?q=M%C3%BChlenstra%C3%9Fe%207,%2040213%20D%C3%BCsseldorf&z=16&hl=de&output=embed';
+                i.loading='lazy'; i.referrerPolicy='no-referrer-when-downgrade';
+                w.innerHTML=''; w.appendChild(i);
+              });
+            })();
+            </script>
             <a class="btn btn--ghost" href="https://www.google.com/maps/place/?q=place_id:ChIJ34sgQpDNuEcRXzJ2Onki97U" target="_blank" rel="noopener" style="margin-top:14px;">In Google Maps öffnen ↗</a>
           </div>
           <div class="card reveal">
