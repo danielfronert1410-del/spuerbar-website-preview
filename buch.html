@@ -308,15 +308,6 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     </div>
   </footer>
 
-  <!-- Steffi, Chatbot – Widget-Script wird erst nach Einwilligung geladen (siehe Consent-Banner) -->
-  <elevenlabs-convai
-    agent-id="agent_9101kw9zz2zff61bbp6e9tpz8a0e"
-    avatar-image-url="https://spuerbar-ich-sein.de/assets/ki-avatar.png"
-    action-text="KI-Assistentin: Fragen zu Angeboten &amp; Ablauf"
-    start-call-text="Mit der KI-Assistentin schreiben"
-    end-call-text="Gespräch beenden"
-    listening-text="Ich höre dir zu …"
-    speaking-text="KI-Assistentin spricht …"></elevenlabs-convai>
 
     <!-- Notbremse: Der Einblend-Beobachter im Bundle vergibt .in erst bei 12 % Sichtbarkeit.
        Blöcke, die höher sind als ~8x der Bildschirmhöhe, erreichen diese Schwelle nie und
@@ -364,7 +355,6 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
       <fieldset class="sis-consent__opts">
         <label class="sis-consent__opt"><input type="checkbox" checked disabled><span><b>Notwendig</b>Speichert nur deine Auswahl hier. L&auml;uft immer.</span></label>
         <label class="sis-consent__opt"><input type="checkbox" data-c="stat"><span><b>Statistik (Google Analytics)</b>Misst anonym, welche Seiten aufgerufen werden.</span></label>
-        <label class="sis-consent__opt"><input type="checkbox" data-c="chat"><span><b>KI-Chat-Assistentin (ElevenLabs)</b>L&auml;dt den automatisierten Chatbot. Er beantwortet Fragen zu Angeboten, Preisen und Ablauf. Bitte gib dort keine Gesundheitsdaten ein.</span></label>
         <label class="sis-consent__opt"><input type="checkbox" data-c="seo"><span><b>SEO-Optimierung (ClickRank)</b>Analysiert Seiteninhalte f&uuml;r Suchmaschinen.</span></label>
       </fieldset>
       <div class="sis-consent__btns">
@@ -379,7 +369,6 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
     var KEY='sis-consent-v2', OLD='sis-consent';
     var banner=document.getElementById('sis-consent');
     var done={gtm:false,el:false,cr:false};
-    function loadEleven(){ if(done.el)return; if(!document.querySelector('elevenlabs-convai'))return; done.el=true; var s=document.createElement('script'); s.src='https://unpkg.com/@elevenlabs/convai-widget-embed'; s.async=true; s.type='text/javascript'; document.body.appendChild(s); }
     function loadGTM(){ if(done.gtm)return; done.gtm=true; (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TD46XN5X'); }
     function loadClickRank(){ if(done.cr)return; done.cr=true; var c=document.createElement('script'); c.src='https://js.clickrank.ai/seo/bba8bf68-54f0-4ac0-bdf8-91d979c7f7ec/script?'+new Date().getTime(); c.async=true; document.head.appendChild(c); }
     function read(){
@@ -398,7 +387,6 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
         gtag('consent','update',{'ad_storage':g,'analytics_storage':g,'ad_user_data':g,'ad_personalization':g});
       }
       if(p.stat) loadGTM();
-      if(p.chat) loadEleven();
       if(p.seo)  loadClickRank();
     }
     function boxes(){ return banner? banner.querySelectorAll('input[data-c]') : []; }
@@ -413,12 +401,12 @@ try{if(localStorage.getItem('sis-consent')==='granted'){gtag('consent','update',
       var c=e.target.closest('[data-consent]');
       if(c){
         var v=c.getAttribute('data-consent'), p;
-        if(v==='all')      p={stat:true,chat:true,seo:true};
-        else if(v==='deny')p={stat:false,chat:false,seo:false};
+        if(v==='all')      p={stat:true,seo:true};
+        else if(v==='deny')p={stat:false,seo:false};
         else               p=collect();
-        var before=read()||{stat:false,chat:false,seo:false};
+        var before=read()||{stat:false,seo:false};
         save(p); hide(); apply(p);
-        var revoked=(before.stat&&!p.stat)||(before.chat&&!p.chat)||(before.seo&&!p.seo);
+        var revoked=(before.stat&&!p.stat)||(before.seo&&!p.seo);
         if(revoked&&(done.gtm||done.el||done.cr)){ try{location.reload();}catch(e){} }
         return;
       }
